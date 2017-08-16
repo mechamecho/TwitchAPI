@@ -1,7 +1,7 @@
 /*global $*/
 $("document").ready(function() {
 	var inner = "";
-	var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+	var streamers = ["ESL_SC2", "OgamingSC2", "kaushfiaush", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
 	// var data={query:"League of Legends", language:"en", limit:10}
 	var html = "";
 	var stream_id = 0;
@@ -11,13 +11,22 @@ $("document").ready(function() {
 			url: 'https://wind-bow.glitch.me/twitch-api/channels/' + streamer,
 			success: function(response) {
 				stream_id = response._id;
-				if (response.logo === null) {
-					html += "<tr><td>" + response.display_name + "</td><td><a href='https://placeholder.com'><img src='https://via.placeholder.com/350x150'></a></td>" + "<td id='" + streamer + "'></td>";
-				} else {
-					html += "<tr><td>" + response.display_name + "</td><td><img src='" + response.logo + "' class='icon'></td>" + "<td id='" + streamer + "'></td>";
+				var display_name="";
+				if (response.display_name === undefined) {
+					display_name="User not available";
+					html+="<tr><td>" + display_name + "</td><td><a href='https://placeholder.com'><img src='https://via.placeholder.com/350x150'></a></td>" + "<td id='Unavilable'></td>";
+				}else{
+					display_name=response.display_name;
+					if(response.logo===null){
+						html += "<tr><td>" + display_name + "</td><td><a href='https://placeholder.com'><img src='https://via.placeholder.com/350x150'></a></td>" + "<td id='" + streamer + "'></td>";	
+					} else {
+						html += "<tr><td>" + display_name + "</td><td><img src='" + response.logo + "' class='icon'></td>" + "<td id='" + streamer + "'></td>";
+					}
+					$("#streamer-table").html(html);
+					var streamer_url = "https://wind-bow.glitch.me/twitch-api/streams/" + stream_id;	
 				}
-				$("#streamer-table").html(html);
-				var streamer_url = "https://wind-bow.glitch.me/twitch-api/streams/" + stream_id;
+				
+
 				$.ajax({
 					type: "GET",
 					url: streamer_url,
