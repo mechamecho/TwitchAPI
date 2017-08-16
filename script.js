@@ -14,7 +14,7 @@ $("document").ready(function() {
 				var display_name="";
 				if (response.display_name === undefined) {
 					display_name="User not available";
-					html+="<tr><td>" + display_name + "</td><td><a href='https://placeholder.com'><img src='https://via.placeholder.com/350x150'></a></td>" + "<td id='Unavilable'></td>";
+					html+="<tr><td>" + display_name + "</td><td><a href='https://placeholder.com'><img src='https://via.placeholder.com/350x150'></a></td>" + "<td class='Unavailable'></td>";
 				}else{
 					display_name=response.display_name;
 					if(response.logo===null){
