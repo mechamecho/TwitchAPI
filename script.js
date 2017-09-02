@@ -31,10 +31,10 @@ $("document").ready(function() {
 					type: "GET",
 					url: streamer_url,
 					success: function(response) {
-						if (response.stream === null) {
-							inner = "Offline";
-						} else {
+						if (response.stream !== null) {
 							inner = "Online";
+						} else {
+							inner = "Offline";
 						}
 						$("#" + streamer).html(inner);
 					}
