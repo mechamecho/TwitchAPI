@@ -1,7 +1,7 @@
 /*global $*/
 $("document").ready(function() {
 	var inner = "";
-	var streamers = ["ESL_SC2", "NALCS1","OgamingSC2", "kaushfiaush", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+	var streamers = ["summonersinnlive",ESL_SC2", "NALCS1","OgamingSC2", "kaushfiaush", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
 	// var data={query:"League of Legends", language:"en", limit:10}
 	var html = "";
 	var stream_id = 0;
